@@ -14,10 +14,6 @@ angular.module('app').controller('listsCtrl', ['listFactory', function(listFacto
     this.saveList = function (index) {
         listFactory.saveList(index, this.newListName);
 
-        this.listName = '';
-    };
-
-    this.removeList = function(index){
-        listFactory.removeList(index);
+	    this.listName = '';
     };
 }]);

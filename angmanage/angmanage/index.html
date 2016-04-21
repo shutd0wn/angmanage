@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="lists.ctrl.js"></script>
     <script type="text/javascript" src="list.factory.js"></script>
     <script type="text/javascript" src="task.controller.js"></script>
     <script type="text/javascript" src="task.factory.js"></script>
     <script type="text/javascript" src="app.directive.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,12 +20,9 @@
     </header>
 
     <section id="list-container" class="list-container" ng-controller="listsCtrl as ctrlL">
-            <label for="">Search:</label>
-            <input type="text" ng-model="searchText">
-            <br>
-            <section class="list" ng-repeat="list in ctrlL.lists | filter : searchText">
+            <section class="list" ng-repeat="list in ctrlL.lists">
                 <span class="glyphicon glyphicon-remove remove" ng-click="ctrlL.removeList($index)"></span>
-                <h4 ng-click="ctrlL.editList($index)" ng-show="!list.editList">{{list.listName}}</h4>
+                <h3 ng-click="ctrlL.editList($index)" ng-show="!list.editList">{{list.listName}}</h3>
                 <form ng-submit="ctrlL.saveList($index)">
                     <input class="form-control" type="text" ng-model="ctrlL.newListName" ng-show="list.editList">
                 </form>
@@ -36,8 +32,7 @@
                         <input class="form-control" type="text" ng-model="ctrlT.taskName">
                     </form>
 
-                    <div class="task" ng-repeat="task in list.tasks | filter : searchText">
-                        <span class="glyphicon glyphicon-remove remove" ng-click="ctrlT.removeTask($index, list)"></span>
+                    <div class="task" ng-repeat="task in list.tasks">
                         <span class="task-name" ng-click="ctrlT.editTask($index, list)" ng-show="!task.editTask">{{task.taskName}}</span>
                         <form ng-submit="ctrlT.saveTask($index, list)">
                             <input class="form-control" edit-field="ctrlT.task.editTask" type="text" ng-show="task.editTask"

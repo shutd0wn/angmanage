@@ -12,10 +12,7 @@ angular.module('app').controller('taskCtrl', ['$scope', 'taskFactory', function 
     };
 
     this.saveTask = function (index, list) {
-        taskFactory.saveTask(index, this.newTaskName, list);
-    };
-
-    this.removeTask = function (index, list) {
-        taskFactory.removeTask(index, list);
+	    console.log('model', this.newTaskName)
+	    taskFactory.saveTask(index, this.newTaskName, list);
     }
 }]);

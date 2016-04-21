@@ -31,10 +31,6 @@ angular.module('app').factory('listFactory', function () {
         saveList : function (index, listName) {
             this.lists[index].listName = listName;
             this.lists[index].editList = false;
-        },
-
-        removeList : function (index) {
-            this.lists.splice(index, 1);
         }
     }
 });

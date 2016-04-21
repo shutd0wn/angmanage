@@ -16,7 +16,7 @@ angular.module('app').factory('taskFactory', ['listFactory', function(listFactor
             var present = false;
 
             if(!list.tasks){
-                list.tasks = [];
+	            list.tasks = [];
                 list.tasks.push({taskName : taskName});
             }
 
@@ -38,10 +38,6 @@ angular.module('app').factory('taskFactory', ['listFactory', function(listFactor
         saveTask : function (index, taskName, list) {
             list.tasks[index].taskName = taskName;
             list.tasks[index].editTask = false;
-        },
-
-        removeTask : function (index, list) {
-            list.tasks.splice(index, 1);
         }
     }
 }]);

@@ -1,3 +1,6 @@
+h4{
+    margin: 20px 0;
+}
 .list{
     padding:10px;
     border-radius: 5px;
@@ -8,32 +11,58 @@
     text-align: center;
     margin: 10px;
     position: relative;
-	-webkit-box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
-	-moz-box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
-	box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
+    -webkit-box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
+    -moz-box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
+    box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+
+    -webkit-animation: pulse 1s;
+    -moz-animation: pulse 1s;
+    -ms-animation: pulse 1s;
+    animation: pulse 1s;
 }
 .task{
+    position: relative;
     border-radius: 5px;
     background-color: #58ACFA;
     height: 50px;
     min-width:150px;
     text-align: center;
     margin: 10px;
-	transition: all linear 0.5s;
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    overflow:hidden;
 }
-.task.ng-enter{
-	height:0;
+.list.ng-enter{
+    /*opacity: 0;*/
+}
+.list.ng-enter-active{
+    /*opacity: 1;*/
+    -webkit-animation: bounceInDown 1s;
+    -moz-animation: bounceInDown 1s;
+    -ms-animation: bounceInDown 1s;
+    animation: bounceInDown 1s;
+}
+.list.ng-leave-active,
+.task.ng-leave-active{
+    -webkit-animation: fadeOutDown 1s;
+    -moz-animation: fadeOutDown 1s;
+    -ms-animation: fadeOutDown 1s;
+    animation: fadeOutDown 1s;
 }
 .task.ng-enter-active{
-	height:50px;
+    -webkit-animation: fadeInDown 1s;
+    -moz-animation: fadeInDown 1s;
+    -ms-animation: fadeInDown 1s;
+    animation: fadeInDown 1s;
 }
 .remove{
-	cursor: pointer;
-	position: absolute;
-	right: 10px;
-	top: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right:10px;
 }
-
 .ng-hide {
-	height: 0;
+    height: 0;
 }
