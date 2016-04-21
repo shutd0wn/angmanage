@@ -1,17 +1,18 @@
 angular.module('app').controller('taskCtrl', ['$scope', 'taskFactory', function ($scope, taskFactory) {
-    $scope.tasks = taskFactory.getTasks();
+    this.tasks = taskFactory.getTasks();
 
-    $scope.addTask = function (list) {
-        taskFactory.addTaskToList($scope.taskName, list);
+    this.addTask = function (list) {
+        taskFactory.addTaskToList(this.taskName, list);
 
-        $scope.taskName = '';
+        this.taskName = '';
     };
 
-    $scope.editTask = function(index, list){
+    this.editTask = function(index, list){
         taskFactory.editTask(index, list);
     };
 
-    $scope.saveTask = function (index, newTaskName, list) {
-        taskFactory.saveTask(index, newTaskName, list);
+    this.saveTask = function (index, list) {
+	    console.log('model', this.newTaskName)
+	    taskFactory.saveTask(index, this.newTaskName, list);
     }
 }]);

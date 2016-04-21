@@ -1,18 +1,19 @@
-angular.module('app').controller('listsCtrl', ['$scope', 'listFactory', function($scope, listFactory){
-    $scope.lists = listFactory.getLists();
+angular.module('app').controller('listsCtrl', ['listFactory', function(listFactory){
+    this.lists = listFactory.getLists();
 
-    $scope.addList = function(){
-        listFactory.addList($scope.listName);
+    this.addList = function(){
+        listFactory.addList(this.listName);
 
-
-        $scope.listName = '';
+        this.listName = '';
     };
 
-    $scope.editList = function (index, listName) {
-        listFactory.editList(index, listName);
+    this.editList = function (index) {
+        listFactory.editList(index);
     };
 
-    $scope.saveList = function (index, listName) {
-        listFactory.saveList(index, listName);
+    this.saveList = function (index) {
+        listFactory.saveList(index, this.newListName);
+
+	    this.listName = '';
     };
 }]);

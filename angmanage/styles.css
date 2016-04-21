@@ -1,21 +1,39 @@
 .list{
     padding:10px;
-    border:1px solid #000;
     border-radius: 5px;
-    background-color: #ccc;
+    background-color: #CEE3F6;
     min-height: 150px;
     min-width:200px;
     float:left;
     text-align: center;
     margin: 10px;
+    position: relative;
+	-webkit-box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
+	-moz-box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
+	box-shadow: 15px 14px 28px -5px rgba(5,0,5,0.85);
 }
 .task{
-    padding:10px;
-    border:1px solid #000;
     border-radius: 5px;
-    background-color: #44f;
-    min-height: 50px;
+    background-color: #58ACFA;
+    height: 50px;
     min-width:150px;
     text-align: center;
     margin: 10px;
+	transition: all linear 0.5s;
+}
+.task.ng-enter{
+	height:0;
+}
+.task.ng-enter-active{
+	height:50px;
+}
+.remove{
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+.ng-hide {
+	height: 0;
 }

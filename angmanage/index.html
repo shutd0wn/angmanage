@@ -4,38 +4,39 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="lists.ctrl.js"></script>
     <script type="text/javascript" src="list.factory.js"></script>
     <script type="text/javascript" src="task.controller.js"></script>
     <script type="text/javascript" src="task.factory.js"></script>
     <script type="text/javascript" src="app.directive.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="row">
-            <h1 class="app-name">Manage</h1>
-        </div>
+        <h1 class="app-name">Manage</h1>
     </header>
 
-    <section id="list-container" class="list-container" ng-controller="listsCtrl">
-        <div class="row">
-            <section class="list" ng-repeat="list in lists">
-                <h1 ng-click="editList($index)" ng-show="!list.editList">{{list.listName}}</h1>
-                <form ng-submit="saveList($index, newListName)">
-                    <input type="text" ng-model="newListName" ng-show="list.editList">
+    <section id="list-container" class="list-container" ng-controller="listsCtrl as ctrlL">
+            <section class="list" ng-repeat="list in ctrlL.lists">
+                <span class="glyphicon glyphicon-remove remove" ng-click="ctrlL.removeList($index)"></span>
+                <h3 ng-click="ctrlL.editList($index)" ng-show="!list.editList">{{list.listName}}</h3>
+                <form ng-submit="ctrlL.saveList($index)">
+                    <input class="form-control" type="text" ng-model="ctrlL.newListName" ng-show="list.editList">
                 </form>
 
-                <div id="task-section" ng-controller="taskCtrl">
-                    <form ng-submit="addTask(list)">
-                        <input type="text" ng-model="taskName">
+                <div id="task-section" ng-controller="taskCtrl as ctrlT">
+                    <form ng-submit="ctrlT.addTask(list)">
+                        <input class="form-control" type="text" ng-model="ctrlT.taskName">
                     </form>
 
                     <div class="task" ng-repeat="task in list.tasks">
-                        <span class="task-name" ng-click="editTask($index, list)" ng-show="!task.editTask">{{task.taskName}}</span>
-                        <form ng-submit="saveTask($index, newTaskName, list)">
-                            <input edit-field="task.editTask" type="text" ng-show="task.editTask" ng-model="newTaskName">
+                        <span class="task-name" ng-click="ctrlT.editTask($index, list)" ng-show="!task.editTask">{{task.taskName}}</span>
+                        <form ng-submit="ctrlT.saveTask($index, list)">
+                            <input class="form-control" edit-field="ctrlT.task.editTask" type="text" ng-show="task.editTask"
+                            ng-model="ctrlT.newTaskName">
                         </form>
                     </div>
                 </div>
@@ -43,12 +44,10 @@
             </section>
 
             <section class="list">
-                <form ng-submit="addList()">
-                    <input type="text" ng-model="listName">
+                <form ng-submit="ctrlL.addList()">
+                    <input class="form-control" type="text" ng-model="ctrlL.listName">
                 </form>
             </section>
-
-        </div>
     </section>
 </body>
 </html>

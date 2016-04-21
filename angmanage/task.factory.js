@@ -5,8 +5,8 @@ angular.module('app').factory('taskFactory', ['listFactory', function(listFactor
 
     angular.forEach(lists, function (value) {
         value.tasks = [];
-        // tasks[value.listName] = [];
     });
+
     return {
         getTasks : function () {
             return tasks;
@@ -15,7 +15,8 @@ angular.module('app').factory('taskFactory', ['listFactory', function(listFactor
         addTaskToList : function (taskName, list) {
             var present = false;
 
-            if(!list.tasks.length){
+            if(!list.tasks){
+	            list.tasks = [];
                 list.tasks.push({taskName : taskName});
             }
 
@@ -28,8 +29,6 @@ angular.module('app').factory('taskFactory', ['listFactory', function(listFactor
             if(!present && taskName != ''){
                 list.tasks.push({taskName : taskName});
             }
-
-            // listFactory.setLists(tasks);
         },
 
         editTask : function (index, list) {
