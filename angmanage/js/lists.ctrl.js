@@ -1,8 +1,12 @@
-angular.module('app').controller('listsCtrl', ['listFactory', function(listFactory){
+angular.module('app').controller('listsCtrl', ['listFactory', '$timeout', function(listFactory, $timeout){
     this.lists = listFactory.getLists();
 
     this.addList = function(){
-        listFactory.addList(this.listName);
+		this.addListClass = listFactory.addList(this.listName) ? 'list-add-animate' : '';
+
+//	    $timeout(function(){
+//		    this.addListClass = '';
+//	    }.bind(this),500);
 
         this.listName = '';
     };

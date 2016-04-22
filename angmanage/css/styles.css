@@ -1,12 +1,15 @@
 h4{
     margin: 20px 0;
 }
+#list-container{
+	position: relative;
+}
 .list{
     padding:25px 10px;
     border-radius: 5px;
     background-color: #CEE3F6;
     min-height: 150px;
-    min-width:200px;
+	width:200px;
     float:left;
     text-align: center;
     margin: 10px;
@@ -21,6 +24,14 @@ h4{
     -moz-animation: pulse 1s;
     -ms-animation: pulse 1s;
     animation: pulse 1s;
+}
+.list-add-animate{
+}
+.add-list.ng-enter{
+
+}
+.add-list.ng-enter-active{
+
 }
 .task{
     position: relative;

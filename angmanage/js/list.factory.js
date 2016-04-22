@@ -21,7 +21,11 @@ angular.module('app').factory('listFactory', function () {
 
             if(!present && name != ''){
                 this.lists.push({listName:name});
+
+                return true;
             }
+
+            return false;
         },
 
         editList : function (index) {
