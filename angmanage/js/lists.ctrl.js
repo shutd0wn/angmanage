@@ -7,6 +7,12 @@ angular.module('app').controller('listsCtrl', ['listFactory', function(listFacto
         this.listName = '';
     };
 
+	this.undoChange = function(index, event){
+		if(!event.keyCode || event.keyCode == 27){
+			listFactory.undoChange(index);
+		}
+	};
+
     this.editList = function (index) {
         listFactory.editList(index);
     };
@@ -14,6 +20,10 @@ angular.module('app').controller('listsCtrl', ['listFactory', function(listFacto
     this.saveList = function (index) {
         listFactory.saveList(index, this.newListName);
 
-	    this.listName = '';
+        this.listName = '';
+    };
+
+    this.removeList = function(index){
+        listFactory.removeList(index);
     };
 }]);

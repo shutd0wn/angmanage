@@ -17,5 +17,11 @@ angular.module('app').controller('taskCtrl', ['$scope', 'taskFactory', function 
 
     this.removeTask = function (index, list) {
         taskFactory.removeTask(index, list);
-    }
+    };
+
+	this.undoChange = function(index, event, list){
+		if(!event.keyCode || event.keyCode == 27){
+			taskFactory.undoChange(index, list);
+		}
+	};
 }]);

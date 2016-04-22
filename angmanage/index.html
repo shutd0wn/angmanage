@@ -5,15 +5,16 @@
     <title>Title</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="lists.ctrl.js"></script>
-    <script type="text/javascript" src="list.factory.js"></script>
-    <script type="text/javascript" src="task.controller.js"></script>
-    <script type="text/javascript" src="task.factory.js"></script>
-    <script type="text/javascript" src="app.directive.js"></script>
+    <script src="js/angular-drag-and-drop-lists.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/lists.ctrl.js"></script>
+    <script type="text/javascript" src="js/list.factory.js"></script>
+    <script type="text/javascript" src="js/task.controller.js"></script>
+    <script type="text/javascript" src="js/task.factory.js"></script>
+    <script type="text/javascript" src="js/app.directive.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
@@ -28,7 +29,9 @@
                 <span class="glyphicon glyphicon-remove remove" ng-click="ctrlL.removeList($index)"></span>
                 <h4 ng-click="ctrlL.editList($index)" ng-show="!list.editList">{{list.listName}}</h4>
                 <form ng-submit="ctrlL.saveList($index)">
-                    <input class="form-control" type="text" ng-model="ctrlL.newListName" ng-show="list.editList">
+                    <input edit-field="list.editList" class="form-control" ng-blur="ctrlL.undoChange($index, false)"
+                     ng-keyup="ctrlL.undoChange($index, $event)" type="text"
+                    ng-model="ctrlL.newListName" ng-show="list.editList">
                 </form>
 
                 <div id="task-section" ng-controller="taskCtrl as ctrlT">
@@ -40,12 +43,12 @@
                         <span class="glyphicon glyphicon-remove remove" ng-click="ctrlT.removeTask($index, list)"></span>
                         <span class="task-name" ng-click="ctrlT.editTask($index, list)" ng-show="!task.editTask">{{task.taskName}}</span>
                         <form ng-submit="ctrlT.saveTask($index, list)">
-                            <input class="form-control" edit-field="ctrlT.task.editTask" type="text" ng-show="task.editTask"
-                            ng-model="ctrlT.newTaskName">
+                            <input edit-field="task.editTask" class="form-control" ng-blur="ctrlT.undoChange($index, false, list)"
+                            ng-keyup="ctrlT.undoChange($index, $event, list)"
+                            type="text" ng-show="task.editTask" ng-model="ctrlT.newTaskName">
                         </form>
                     </div>
                 </div>
-
             </section>
 
             <section class="list">

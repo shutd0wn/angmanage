@@ -35,6 +35,10 @@ angular.module('app').factory('listFactory', function () {
 
         removeList : function (index) {
             this.lists.splice(index, 1);
+        },
+
+        undoChange : function(index){
+			this.lists[index].editList = false;
         }
     }
 });

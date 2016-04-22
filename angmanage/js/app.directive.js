@@ -4,7 +4,9 @@ angular.module('app').directive('editField', function ($timeout) {
         link : function (scope, element, attrs) {
             scope.$watch(attrs.editField, function(value){
                 if(value){
-                    element[0].focus();
+	                $timeout(function(){
+		                element[0].focus();
+	                });
                 }
             });
         }
